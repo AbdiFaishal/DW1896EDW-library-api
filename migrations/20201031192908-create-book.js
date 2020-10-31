@@ -21,8 +21,6 @@ module.exports = {
           model: 'Categories',
           key: 'id',
         },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE',
       },
       userId: {
         allowNull: false,
@@ -31,8 +29,6 @@ module.exports = {
           model: 'Users',
           key: 'id',
         },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE',
       },
       pages: {
         type: Sequelize.STRING,
