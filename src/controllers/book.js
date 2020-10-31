@@ -60,7 +60,14 @@ exports.getAllBooks = async (req, res) => {
         },
       ],
       attributes: {
-        exclude: ['categoryId', 'userId', 'createdAt', 'updatedAt'],
+        exclude: [
+          'categoryId',
+          'userId',
+          'createdAt',
+          'updatedAt',
+          'CategoryId',
+          'UserId',
+        ],
       },
     });
 
