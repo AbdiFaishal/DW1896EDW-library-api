@@ -174,6 +174,14 @@ exports.getUserBooks = async (req, res) => {
       ],
     });
 
+    if (!books.length) {
+      return res.status(404).send({
+        error: {
+          message: "You haven't uploaded any book yet",
+        },
+      });
+    }
+
     res.send({
       message: 'Fetching all owned books is success',
       data: books,
