@@ -12,9 +12,9 @@ exports.upload = (fieldName) => {
       const fileName = originalName.split('.');
       const extension = fileName[fileName.length - 1];
 
-      console.log('fieldname: ', file);
-      console.log('extension: ', extension);
-      console.log('filename :', fileName);
+      // console.log('fieldname: ', file);
+      // console.log('extension: ', extension);
+      // console.log('filename :', fileName);
       return {
         folder: `library/${file.fieldname}s`,
         resource_type: extension === 'epub' ? 'raw' : 'image',
@@ -81,7 +81,7 @@ exports.upload = (fieldName) => {
       if (!req.file && !req.files && !err) {
         return res.status(400).send({
           error: {
-            message: 'Please upload both image and file of your literature',
+            message: 'Please upload both image and file of your book',
           },
         });
       }
