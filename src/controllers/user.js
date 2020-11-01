@@ -37,10 +37,10 @@ exports.updateUserAvatar = async (req, res) => {
     const avatarFile = req.file;
     const url = req.protocol + '://' + req.get('host');
 
-    // console.log('avatar: ', req.file);
+    console.log('avatar: ', req.file);
     const user = await User.update(
       {
-        avatar: `${url}/api/v1/${avatarFile.path}`,
+        avatar: `${avatarFile.path}`,
       },
       {
         where: {

@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-const { uploadBook } = require('../middleware/uploadFile');
-
 const { isAuth, isAdmin } = require('../middleware/authentication');
+const { uploadBook } = require('../middleware/uploadFile');
+// const { upload } = require('../middleware/uploadFile2');
+const { upload } = require('../middleware/uploadCloudinary');
 
 const {
   getAllBooks,
@@ -21,21 +22,22 @@ router.get('/books', getAllBooks);
 router.get('/approved-books', isAuth, getAllApprovedBooks);
 router.get('/owned-books', isAuth, getUserBooks);
 router.get('/book/:id', getDetailBook);
-router.post(
-  '/book',
-  isAuth,
-  uploadBook.fields([
-    {
-      name: 'image',
-      maxCount: 1,
-    },
-    {
-      name: 'file',
-      maxCount: 1,
-    },
-  ]),
-  addBook
-);
+// router.post(
+//   '/book',
+//   isAuth,
+//   uploadBook.fields([
+//     {
+//       name: 'image',
+//       maxCount: 1,
+//     },
+//     {
+//       name: 'file',
+//       maxCount: 1,
+//     },
+//   ]),
+//   addBook
+// );
+router.post('/book', isAuth, upload('bookUpload'), addBook);
 router.post(
   '/book-admin',
   isAuth,

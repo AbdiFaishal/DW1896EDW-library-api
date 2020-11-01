@@ -19,6 +19,7 @@ app.get('/', (req, res) => {
 app.use('/api/v1/uploads', express.static('uploads'));
 app.use('/api/v1/userUploads', express.static('userUploads'));
 app.use('/api/v1/userEpubs', express.static('userEpubs'));
+app.use('/public', express.static('public'));
 
 app.use('/api/v1', userRouter);
 app.use('/api/v1', categoryRouter);

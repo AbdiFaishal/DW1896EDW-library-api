@@ -252,19 +252,20 @@ exports.getDetailBook = async (req, res) => {
 
 exports.addBook = async (req, res) => {
   try {
-    const {
-      title,
-      publication,
-      categoryId,
-      userId,
-      pages,
-      ISBN,
-      aboutBook,
-      file,
-      status,
-    } = req.body;
+    // const {
+    //   title,
+    //   publication,
+    //   categoryId,
+    //   userId,
+    //   pages,
+    //   ISBN,
+    //   aboutBook,
+    //   file,
+    //   status,
+    // } = req.body;
     const url = req.protocol + '://' + req.get('host');
     const uploadFiles = req.files;
+    console.log('files: ', uploadFiles);
 
     if (!uploadFiles.file || !uploadFiles.image) {
       return res.status(400).send({
@@ -278,8 +279,8 @@ exports.addBook = async (req, res) => {
       ...req.body,
       userId: req.user.id,
       status: 'Waiting',
-      file: `${url}/api/v1/${uploadFiles.file[0].path}`,
-      image: `${url}/api/v1/${uploadFiles.image[0].path}`,
+      file: `${uploadFiles.file[0].path}`,
+      image: `${uploadFiles.image[0].path}`,
     });
 
     const bookRes = await bookResponse(addBook.id);
