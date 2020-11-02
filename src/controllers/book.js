@@ -174,7 +174,7 @@ exports.getUserBooks = async (req, res) => {
       ],
     });
 
-    if (!books.length) {
+    if (books.length === 0) {
       return res.status(404).send({
         error: {
           message: "You haven't uploaded any book yet",
@@ -190,7 +190,7 @@ exports.getUserBooks = async (req, res) => {
     console.log(err);
 
     res.status(400).json({
-      message: ererrror.message,
+      message: err.message,
     });
   }
 };
@@ -264,6 +264,7 @@ exports.addBook = async (req, res) => {
     //   status,
     // } = req.body;
     // const url = req.protocol + '://' + req.get('host');
+
     const uploadFiles = req.files;
     // console.log('files: ', uploadFiles);
 
@@ -312,7 +313,7 @@ exports.addBookAdmin = async (req, res) => {
     //   status,
     // } = req.body;
 
-    const url = req.protocol + '://' + req.get('host');
+    // const url = req.protocol + '://' + req.get('host');
     const uploadFiles = req.files;
 
     if (!req.files.file || !req.files.image) {
@@ -348,17 +349,17 @@ exports.addBookAdmin = async (req, res) => {
 
 exports.updateBook = async (req, res) => {
   try {
-    const {
-      title,
-      publication,
-      categoryId,
-      userId,
-      pages,
-      ISBN,
-      aboutBook,
-      file,
-      status,
-    } = req.body;
+    // const {
+    //   title,
+    //   publication,
+    //   categoryId,
+    //   userId,
+    //   pages,
+    //   ISBN,
+    //   aboutBook,
+    //   file,
+    //   status,
+    // } = req.body;
 
     const id = req.params.id;
     const uploadFiles = req.files;
