@@ -38,22 +38,23 @@ router.get('/book/:id', getDetailBook);
 //   addBook
 // );
 router.post('/book', isAuth, upload('bookUpload'), addBook);
-router.post(
-  '/book-admin',
-  isAuth,
-  isAdmin,
-  uploadBook.fields([
-    {
-      name: 'image',
-      maxCount: 1,
-    },
-    {
-      name: 'file',
-      maxCount: 1,
-    },
-  ]),
-  addBookAdmin
-);
+// router.post(
+//   '/book-admin',
+//   isAuth,
+//   isAdmin,
+//   uploadBook.fields([
+//     {
+//       name: 'image',
+//       maxCount: 1,
+//     },
+//     {
+//       name: 'file',
+//       maxCount: 1,
+//     },
+//   ]),
+//   addBookAdmin
+// );
+router.post('/book-admin', isAuth, isAdmin, upload('bookUpload'), addBookAdmin);
 router.patch(
   '/book/:id',
   isAuth,
