@@ -153,7 +153,7 @@ exports.getUserBooks = async (req, res) => {
     const books = await Book.findAll({
       where: {
         userId,
-        status: { [Op.ne]: ['Canceled'] },
+        status: { [Op.not]: ['Canceled'] },
       },
       attributes: {
         exclude: ['createdAt', 'updatedAt'],
